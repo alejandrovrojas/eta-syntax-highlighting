@@ -1,0 +1,25 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+name: ETA
+file_extensions: [ eta ]
+scope: source.eta
+
+contexts:
+  main:
+    - match: ''
+      push: Packages/HTML/HTML.sublime-syntax
+      with_prototype:
+        - match: '<%[_-]?[ ]?[~=]?'
+          scope: entity.name.tag.eta punctuation.section.embedded.begin.eta
+          push: js
+  js:
+    - match: '[_-]?%>'
+      scope: entity.name.tag.eta punctuation.section.embedded.end.eta
+      pop: true
+    - match: ''
+      push: Packages/JavaScript/JavaScript.sublime-syntax
+      with_prototype:
+        - match: '(?=[_-]?%>)'
+          scope: punctuation.section.embedded.end.eta
+          pop: true
