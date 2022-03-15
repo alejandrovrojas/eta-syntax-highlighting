@@ -10,7 +10,7 @@ contexts:
     - match: ''
       push: Packages/HTML/HTML.sublime-syntax
       with_prototype:
-        - match: '<%[_-]?[ ]?[~=]?'
+        - match: '<%[_-]?[ ]?[~=]?[\}\]]?'
           scope: entity.name.tag.eta punctuation.section.embedded.begin.eta
           push: js
   js:
